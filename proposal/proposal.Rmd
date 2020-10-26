@@ -12,10 +12,19 @@ library(broom)
 ## 1. Introduction
 
 We are going to work with the "Friends" data package from TidyTuesday.
-It consists of 4 data sets: 
-friends.csv : transcript of all dialogues containing information on the speaker, episode, season, scene, utterence
-friends_emotions.csv : information on the emotions of each utterence with specified scene, episode, and season number
-friens_entities.csv : character entities with info on utterence, scene, episode, season
+It was aggregated, packaged, and shared by Emil Hvitfeldt.
+
+We will try to look behind the levels of popularity throughout all 10 seasons, and ask the ultimate question:
+
+What makes the perfect "Friends" episode?
+
+The package consists of 4 data sets: 
+friends : transcript of all dialogues containing information on the speaker, episode, season, scene, utterance
+friends_emotions : information on the emotions of each utterance with specified scene, episode, and season number
+friends_entities : character entities with info on utterance, scene, episode, season
+friends_info : here we have information on each episode: title, episode number, season number, name of writer and director, airing date, number of views and IMDB ratings.
+
+
 
 
 
