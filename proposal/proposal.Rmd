@@ -11,6 +11,13 @@ library(broom)
 
 ## 1. Introduction
 
+We are going to work with the "Friends" data package from TidyTuesday.
+It consists of 4 data sets: 
+friends.csv : transcript of all dialogues containing information on the speaker, episode, season, scene, utterence
+friends_emotions.csv : information on the emotions of each utterence with specified scene, episode, and season number
+friens_entities.csv : character entities with info on utterence, scene, episode, season
+
+
 
 
 ## 2. Data
