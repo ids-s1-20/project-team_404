@@ -38,5 +38,7 @@ glimpse(friends_info)
 ```
 ## 3. Data analysis plan
 
+We will explore this question through a number of visualizations. We will use the IMDB rating (imdb_rating) of each episode as the response variable to evaluate the impact of each factor on the quality of the episode. 
 
+The factors which we will explore include: the  characters (speaker) which appear with the most prominence, the tone (emotion), the writer(written_by), and the director (directed_by) of each episode. We can also see which variable has the largest impact on viewer satisfaction in this way.
 
