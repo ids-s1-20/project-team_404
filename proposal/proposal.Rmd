@@ -30,7 +30,7 @@ friends_info : here we have information on each episode: title, episode number, 
 
 
 ## 2. Data
-```{r load-packages, message = FALSE}
+```{r glimpse-data}
 glimpse(friends)
 glimpse(friends_emotions)
 glimpse(friends_info)
