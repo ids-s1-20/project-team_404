@@ -42,3 +42,34 @@ We will explore this question through a number of visualizations. We will use th
 
 The factors which we will explore include: the  characters (speaker) which appear with the most prominence, the tone (emotion), the writer(written_by), and the director (directed_by) of each episode. We can also see which variable has the largest impact on viewer satisfaction in this way.
 
+```{r data-reconstruct}
+friendsWanted <- friends %>%
+  filter( 
+    speaker == "Joey Tribbiani"|
+    speaker == "Chandler Bing"|
+    speaker == "Monica Geller"|
+    speaker == "Phoebe Buffay"|
+    speaker == "Rachel Green"|
+    speaker == "Ross Geller"
+  ) %>% 
+  group_by(season, episode) %>% 
+  count(speaker) %>%
+  merge(friends_info, by=c("episode","season"))
+
+```
+
+```{r character-vs-rating}
+friendsWanted %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = speaker))+
+  geom_point()+
+  geom_smooth(color = "black")+
+  facet_wrap('.~speaker')+
+  labs( title = "Episode Ratings vs How much each character spoke",
+        x = "Number of Lines",
+        y = "IMBD Rating",
+        color = "Character"
+      )+
+  scale_color_viridis_d()
+```
+
+

@@ -70,3 +70,47 @@ glimpse(friends_info)
     ## $ imdb_rating       <dbl> 8.3, 8.1, 8.2, 8.1, 8.5, 8.1, 9.0, 8.1, 8.2, 8.1, 8…
 
 ## 3\. Data analysis plan
+
+We will explore this question through a number of visualizations. We
+will use the IMDB rating (imdb\_rating) of each episode as the response
+variable to evaluate the impact of each factor on the quality of the
+episode.
+
+The factors which we will explore include: the characters (speaker)
+which appear with the most prominence, the tone (emotion), the
+writer(written\_by), and the director (directed\_by) of each episode. We
+can also see which variable has the largest impact on viewer
+satisfaction in this way.
+
+``` r
+friendsWanted <- friends %>%
+  filter( 
+    speaker == "Joey Tribbiani"|
+    speaker == "Chandler Bing"|
+    speaker == "Monica Geller"|
+    speaker == "Phoebe Buffay"|
+    speaker == "Rachel Green"|
+    speaker == "Ross Geller"
+  ) %>% 
+  group_by(season, episode) %>% 
+  count(speaker) %>%
+  merge(friends_info, by=c("episode","season"))
+```
+
+``` r
+friendsWanted %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = speaker))+
+  geom_point()+
+  geom_smooth(color = "black")+
+  facet_wrap('.~speaker')+
+  labs( title = "Episode Ratings vs How much each character spoke",
+        x = "Number of Lines",
+        y = "IMBD Rating",
+        color = "Character"
+      )+
+  scale_color_viridis_d()
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+![](proposal_files/figure-gfm/character-vs-rating-1.png)<!-- -->
