@@ -31,7 +31,9 @@ friends_info : here we have information on each episode: title, episode number, 
 
 ## 2. Data
 
-glimpse()
+glimpse(friends)
+glimpse(friends_emotions)
+glimpse(friends_info)
 
 ## 3. Data analysis plan
 
