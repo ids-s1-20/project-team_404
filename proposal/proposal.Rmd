@@ -38,7 +38,7 @@ glimpse(friends_info)
 ```
 ## 3. Data analysis plan
 
-We will explore this question through a number of visualizations. We will use the IMDB rating (imdb_rating) of each episode as the response variable to evaluate the impact of each factor on the quality of the episode. 
+We will explore this question through a number of visualizations. We are using the word 'Perfect' to mean the episode which generates the highest audience satisfaction and so we will use the IMDB rating (imdb_rating) of each episode as the response variable to evaluate the impact of each factor on the quality of the episode. We decided against using the view count, as the number of views of an episode does not necessarilly reflect how it was recieved.
 
 The factors which we will explore include: the  characters (speaker) which appear with the most prominence, the tone (emotion), the writer(written_by), and the director (directed_by) of each episode. We can also see which variable has the largest impact on viewer satisfaction in this way.
 
@@ -71,5 +71,26 @@ friendsWanted %>%
       )+
   scale_color_viridis_d()
 ```
+
+This visualization enables us to see how the Number of lines spoken by each character influences the IMDB rating for that episode. Using just a scatter plot it is difficult to see a connection between the variables, so a trend line was used to reveal a connection. However, the trend line seems to be largely influenced by extreme values, so we will need to do more analysis to see if these values are outliers which need to be removed.
+
+```{r rating_per_writer}
+friendsWanted %>% 
+  group_by(written_by) %>% 
+  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating)) %>% 
+  arrange(desc(mean_rating))
+```
+ In this summary statistic you can see which writers achieved the highest mean IMDB rating. It also becomes clear that the 'written_by' variable does not only contain singular names. We many need to alter this data again to provide only singular names in the 'written_by' variable in order to see more clearly which writers are preferred. 
+ 
+Furthermore, some of the observations show that some writers have the same median and mean rating, leading us to the think that there may only be one episode represented. The sample size of these writers' episodes may thus be too small to draw any meaning full conclusions
+
+```{r writer_episode_count}
+friendsWanted %>% 
+  count(written_by) %>%
+  arrange(n)
+```
+In this table we can see the how many episodes each 'writer' has written, and by arranging them in ascending order we can see that the minimum number of episodes is 6. We must explore as to whether this is an adequate sample size
+
+
 
 
