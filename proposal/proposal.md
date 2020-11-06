@@ -2,12 +2,6 @@ Project proposal
 ================
 Team 404
 
-``` r
-library(tidyverse)
-library(broom)
-library(friends)
-```
-
 ## 1\. Introduction
 
 We are going to work with the “Friends” data package from TidyTuesday.
@@ -42,10 +36,6 @@ an episode. Variables are: `season`, `episode`, `title`, director -
 
 ## 2\. Data
 
-``` r
-glimpse(friends)
-```
-
     ## Rows: 67,373
     ## Columns: 6
     ## $ text      <chr> "There's nothing to tell! He's just some guy I work with!",…
@@ -55,10 +45,6 @@ glimpse(friends)
     ## $ scene     <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
     ## $ utterance <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …
 
-``` r
-glimpse(friends_emotions)
-```
-
     ## Rows: 12,606
     ## Columns: 5
     ## $ season    <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
@@ -66,10 +52,6 @@ glimpse(friends_emotions)
     ## $ scene     <int> 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5,…
     ## $ utterance <int> 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19…
     ## $ emotion   <chr> "Mad", "Neutral", "Joyful", "Neutral", "Neutral", "Neutral"…
-
-``` r
-glimpse(friends_info)
-```
 
     ## Rows: 236
     ## Columns: 8
@@ -86,46 +68,17 @@ glimpse(friends_info)
 
 We will explore this question through a number of visualizations. We are
 using the word ‘Perfect’ to mean the episode which generates the highest
-audience satisfaction and so we will use the IMDB rating (imdb\_rating)
+audience satisfaction and so we will use the IMDB rating (`imdb_rating`)
 of each episode as the response variable to evaluate the impact of each
 factor on the quality of the episode. We decided against using the view
 count, as the number of views of an episode does not necessarilly
 reflect how it was recieved.
 
-The factors which we will explore include: the characters (speaker)
-which appear with the most prominence, the tone (emotion), the
-writer(written\_by), and the director (directed\_by) of each episode. We
-can also see which variable has the largest impact on viewer
+The factors which we will explore include: the characters (`speaker`)
+which appear with the most prominence, the tone (`emotion`), the
+writer(`written_by`), and the director (`directed_by`) of each episode.
+We can also see which variable has the largest impact on viewer
 satisfaction in this way.
-
-``` r
-friendsWanted <- friends %>%
-  filter( 
-    speaker == "Joey Tribbiani"|
-    speaker == "Chandler Bing"|
-    speaker == "Monica Geller"|
-    speaker == "Phoebe Buffay"|
-    speaker == "Rachel Green"|
-    speaker == "Ross Geller"
-  ) %>% 
-  group_by(season, episode) %>% 
-  count(speaker) %>%
-  merge(friends_info, by=c("episode","season"))
-```
-
-``` r
-friendsWanted %>% 
-  ggplot(aes( x = n, y = imdb_rating, color = speaker))+
-  geom_point()+
-  geom_smooth(color = "black")+
-  facet_wrap('.~speaker')+
-  labs( title = "Episode Ratings vs How much each character spoke",
-        x = "Number of Lines",
-        y = "IMBD Rating",
-        color = "Character"
-      )+
-  scale_color_viridis_d()
-```
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
@@ -138,13 +91,6 @@ so a trend line was used to reveal a connection. However, the trend line
 seems to be largely influenced by extreme values, so we will need to do
 more analysis to see if these values are outliers which need to be
 removed.
-
-``` r
-friendsWanted %>% 
-  group_by(written_by) %>% 
-  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating)) %>% 
-  arrange(desc(mean_rating))
-```
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
@@ -173,12 +119,6 @@ Furthermore, some of the observations show that some writers have the
 same median and mean rating, leading us to the think that there may only
 be one episode represented. The sample size of these writers’ episodes
 may thus be too small to draw any meaning full conclusions
-
-``` r
-friendsWanted %>% 
-  count(written_by) %>%
-  arrange(n)
-```
 
     ##                                                                                               written_by
     ## 1                                                                                  Alicia Sky Varinaitis
