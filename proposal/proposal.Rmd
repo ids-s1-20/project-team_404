@@ -28,7 +28,7 @@ friends_emotions : consists of 12,606 rows and 5 columns. Each row representing 
 
 friends_entities : consists of 10.557 rows and 5 columns. Each row being one utterance, variables show detail on utterance number - `utterance`, `entity`, `scene`, `episode`, `season`;
 
-friends_info : consists of 236 rows and 8 columns. Each row represents an episode. Variables are: title, episode number, season number, name of writer and director, airing date, number of views and IMDB ratings.
+friends_info : consists of 236 rows and 8 columns. Each row represents an episode. Variables are: `season`, `episode`, `title`, director - `directed_by`, writer - `written_by`, `air_date`, number of veiws - `us_views_millions`, and `imdb_rating`.
 
 
 

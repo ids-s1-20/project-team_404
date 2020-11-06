@@ -36,8 +36,9 @@ being one utterance, variables show detail on utterance number -
 `utterance`, `entity`, `scene`, `episode`, `season`;
 
 friends\_info : consists of 236 rows and 8 columns. Each row represents
-an episode. Variables are: title, episode number, season number, name of
-writer and director, airing date, number of views and IMDB ratings.
+an episode. Variables are: `season`, `episode`, `title`, director -
+`directed_by`, writer - `written_by`, `air_date`, number of veiws -
+`us_views_millions`, and `imdb_rating`.
 
 ## 2\. Data
 
