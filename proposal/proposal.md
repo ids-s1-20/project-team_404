@@ -11,7 +11,8 @@ library(friends)
 ## 1\. Introduction
 
 We are going to work with the “Friends” data package from TidyTuesday.
-It was aggregated, packaged, and shared by Emil Hvitfeldt.
+It was aggregated, packaged, and shared by Emil Hvitfeldt. We load it
+from the `friends` R package.
 
 We will try to look behind the levels of popularity throughout all 10
 seasons, and ask the ultimate question:
@@ -20,20 +21,23 @@ What makes the perfect “Friends” episode?
 
 The package consists of 4 data sets:
 
-friends : transcript of all dialogues where each row represents an
-utterance. The variables contain information on the speaker, episode,
-season, scene, and the number of utterance;
+friends : consists of 67,373 rows and 6 columns. It is a transcript of
+all dialogues where each row represents an utterance. The variables
+contain information on `text`, the `speaker`, `episode`, `season`,
+`scene`, and the number of utterance - `utterance`;
 
-friends\_emotions : each row representing an utterance, variables give
-information on the number of each utterance and its emotion, with
-specified scene, episode, and season number;
+friends\_emotions : consists of 12,606 rows and 5 columns. Each row
+representing an utterance, variables give information on the number of
+each `utterance` and its `emotion`, with specified `scene`, `episode`,
+and `season` number;
 
-friends\_entities : each row being one utterance, variables show detail
-on utterance number, entity, scene, episode, season;
+friends\_entities : consists of 10.557 rows and 5 columns. Each row
+being one utterance, variables show detail on utterance number -
+`utterance`, `entity`, `scene`, `episode`, `season`;
 
-friends\_info : each row represents an episode. Variables are: title,
-episode number, season number, name of writer and director, airing date,
-number of views and IMDB ratings.
+friends\_info : consists of 236 rows and 8 columns. Each row represents
+an episode. Variables are: title, episode number, season number, name of
+writer and director, airing date, number of views and IMDB ratings.
 
 ## 2\. Data
 
