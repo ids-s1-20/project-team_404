@@ -20,13 +20,14 @@ We will try to look behind the levels of popularity throughout all 10 seasons, a
 What makes the perfect "Friends" episode?
 
 The package consists of 4 data sets: 
-friends : transcript of all dialogues containing information on the speaker, episode, season, scene, utterance
-friends_emotions : information on the emotions of each utterance with specified scene, episode, and season number
-friends_entities : character entities with info on utterance, scene, episode, season
-friends_info : here we have information on each episode: title, episode number, season number, name of writer and director, airing date, number of views and IMDB ratings.
 
+friends : consists of 67,373 rows and 6 columns. It is a transcript of all dialogues where each row represents an utterance. The variables contain information on `text`, the `speaker`, `episode`, `season`, `scene`, and the number of utterance - `utterance`;
 
+friends_emotions : consists of 12,606 rows and 5 columns. Each row representing an utterance, variables give information on the number of each utterance and its emotion, with specified scene, episode, and season number;
 
+friends_entities : consists of 10.557 rows and 5 columns. Each row being one utterance, variables show detail on utterance number, entity, scene, episode, season;
+
+friends_info : consists of 236 rows and 8 columns. Each row represents an episode. Variables are: title, episode number, season number, name of writer and director, airing date, number of views and IMDB ratings.
 
 
 
