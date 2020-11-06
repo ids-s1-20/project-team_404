@@ -15,21 +15,21 @@ What makes the perfect “Friends” episode?
 
 The package consists of 4 data sets:
 
-friends : consists of 67,373 rows and 6 columns. It is a transcript of
+`friends` : consists of 67,373 rows and 6 columns. It is a transcript of
 all dialogues where each row represents an utterance. The variables
 contain information on `text`, the `speaker`, `episode`, `season`,
 `scene`, and the number of utterance - `utterance`;
 
-friends\_emotions : consists of 12,606 rows and 5 columns. Each row
+`friends_emotions` : consists of 12,606 rows and 5 columns. Each row
 representing an utterance, variables give information on the number of
 each `utterance` and its `emotion`, with specified `scene`, `episode`,
 and `season` number;
 
-friends\_entities : consists of 10.557 rows and 5 columns. Each row
+`friends_entities` : consists of 10.557 rows and 5 columns. Each row
 being one utterance, variables show detail on utterance number -
 `utterance`, `entity`, `scene`, `episode`, `season`;
 
-friends\_info : consists of 236 rows and 8 columns. Each row represents
+`friends_info` : consists of 236 rows and 8 columns. Each row represents
 an episode. Variables are: `season`, `episode`, `title`, director -
 `directed_by`, writer - `written_by`, `air_date`, number of veiws -
 `us_views_millions`, and `imdb_rating`.
