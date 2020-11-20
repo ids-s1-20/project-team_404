@@ -1,7 +1,7 @@
 ---
-title: "Presentation title"
-subtitle: "Presentation subtitle (if any)"
-author: "Team name <br> Names of team members"
+title: "The Perfect Friends Episode"
+#subtitle: "Presentation subtitle (if any)"
+author: "Team 404: Sophie Bata-Madden, Natalia Okanikova, Barney Gray"
 institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
@@ -21,6 +21,7 @@ library(tidyverse)
 library(tidymodels)
 library(palmerpenguins)
 library(knitr)
+library(friends)
 ```
 
 ```{r setup, include=FALSE}
@@ -30,6 +31,7 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 
 ```{r load-data, include=FALSE}
 # Load your data here
+# Our data is loaded with the 'friends' package
 ```
 
 
