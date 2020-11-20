@@ -1,6 +1,6 @@
 ---
-title: Project title
-author: by Team name
+title: The Perfect FRIENDS Episode
+author: by Team 404
 output: github_document
 ---
 
