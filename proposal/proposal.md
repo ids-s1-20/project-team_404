@@ -71,8 +71,8 @@ using the word ‘Perfect’ to mean the episode which generates the highest
 audience satisfaction and so we will use the IMDB rating (`imdb_rating`)
 of each episode as the response variable to evaluate the impact of each
 factor on the quality of the episode. We decided against using the view
-count, as the number of views of an episode does not necessarilly
-reflect how it was recieved.
+count, as the number of views of an episode does not necessarily reflect
+how it was received.
 
 The factors which we will explore include: the characters (`speaker`)
 which appear with the most prominence, the tone (`emotion`), the
