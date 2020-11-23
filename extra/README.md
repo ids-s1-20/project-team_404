@@ -7,4 +7,4 @@ Any extra documents you might have go here. This might include Rmd files you're 
 - Make plots for different variables against IMDB rating
 - Write of a summary of each model
 - Write an overrall conclusion stating all the parameters of a 'perfect' episode
--
+- Predict ratings from the variables using modelling
