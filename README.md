@@ -38,5 +38,5 @@ sure to note the retrieval date.
 List any references here. You should, at a minimum, list your data
 source.
 
-Emil Hvitfeldt, *Friends*, electronic dataset, `friends` R package,
+Emil Hvitfeldt 2020, *Friends*, electronic dataset, `friends` R package,
 <https://github.com/emorynlp/character-mining>
