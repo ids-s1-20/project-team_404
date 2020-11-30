@@ -141,26 +141,41 @@ writers <- writers %>%
   mutate(written_by = str_squish(written_by))
 ```
 
-```{r writer-avg-imdb-rating, message = FALSE}
-writers %>% 
+```{r writer-avg-imdb-rating, echo = FALSE, message = FALSE}
+writers_sum <- writers %>% 
   group_by(written_by) %>% 
   summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>% 
   arrange(desc(mean_rating))
+
+kable(head(writers_sum, n = 10), format = "html")
 ```
 
-Should we consider writers with not many episodes?
+The highest rated writer is Suzie Villandry, however she has only written one episode;
+should we consider writers with not many episodes?
 
 ---
 #Writer (cont.)
 
-Here we look at writers with 10 or more episodes.
+Here we look at the top 10 writers with 10 or more episodes.
 
 ```{r writer-avg-over10, echo = FALSE, message = FALSE}
-writers %>% 
-  group_by(written_by) %>% 
-  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>%
-  filter(n_episodes > 9) %>% 
-  arrange(desc(mean_rating))
+writers_sum2 <- writers_sum %>% 
+ filter(n_episodes > 9)
+
+kable(head(writers_sum2, n = 10), format = "html")
+
+```
+---
+#Director
+
+```{r dir-avg-imdb-rating, echo = FALSE, message = FALSE}
+dir_sum <- friends_info %>% 
+  group_by(directed_by) %>% 
+  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>% 
+  arrange(desc(mean_rating)) %>% 
+  filter(n_episodes > 9)
+
+kable(head(dir_sum, n = 10), format = "html")
 ```
 
 ---

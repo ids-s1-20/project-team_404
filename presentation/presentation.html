@@ -75,61 +75,222 @@ friends_wanted_lr &lt;- friends_wanted %&gt;%
 
 
 
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; written_by &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; med_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_episodes &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Suzie Villandry &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.100000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gregory S. MalinsMarta Kauffman &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.050000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scott SilveriAndrew Reich &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.050000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Brian Caldirola &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.000000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Andrew ReichGregory S. Malins &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.950000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Michael Borkow Jill Condon &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.950000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Amy Toomin &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.760000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; David Crane &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.730435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scott SilveriMarta Kauffman &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.725000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mike SikowitzMichael Borkow &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.700000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
-```r
-writers %&gt;% 
-  group_by(written_by) %&gt;% 
-  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %&gt;% 
-  arrange(desc(mean_rating))
-```
-
-```
-## # A tibble: 58 x 4
-##    written_by                      mean_rating med_rating n_episodes
-##    &lt;chr&gt;                                 &lt;dbl&gt;      &lt;dbl&gt;      &lt;int&gt;
-##  1 Suzie Villandry                        9.1        9.1           1
-##  2 Gregory S. MalinsMarta Kauffman        9.05       9.05          2
-##  3 Scott SilveriAndrew Reich              9.05       9.05          2
-##  4 Brian Caldirola                        9          9             1
-##  5 Andrew ReichGregory S. Malins          8.95       8.95          2
-##  6 Michael Borkow Jill Condon             8.95       8.95          2
-##  7 Amy Toomin                             8.76       8.7           5
-##  8 David Crane                            8.73       8.7          23
-##  9 Scott SilveriMarta Kauffman            8.72       8.75          4
-## 10 Mike SikowitzMichael Borkow            8.7        8.7           2
-## # … with 48 more rows
-```
-
-Should we consider writers with not many episodes?
+The highest rated writer is Suzie Villandry, however she has only written one episode;
+should we consider writers with not many episodes?
 
 ---
 #Writer (cont.)
 
-Here we look at writers with 10 or more episodes.
+Here we look at the top 10 writers with 10 or more episodes.
 
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; written_by &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; med_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_episodes &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; David Crane &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.730435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Marta Kauffman &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.673684 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Alexa Junge &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.558333 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gregory S. Malins &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.550000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scott Silveri &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.545454 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Shana Goldberg-Meehan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.504000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ted Cohen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.500000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sherry Bilsing-Graham &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.481818 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ellen Plummer &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.464706 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Andrew Reich &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.413044 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+#Director
 
-```
-## # A tibble: 17 x 4
-##    written_by            mean_rating med_rating n_episodes
-##    &lt;chr&gt;                       &lt;dbl&gt;      &lt;dbl&gt;      &lt;int&gt;
-##  1 David Crane                  8.73       8.7          23
-##  2 Marta Kauffman               8.67       8.5          19
-##  3 Alexa Junge                  8.56       8.4          12
-##  4 Gregory S. Malins            8.55       8.5          16
-##  5 Scott Silveri                8.55       8.5          22
-##  6 Shana Goldberg-Meehan        8.50       8.3          25
-##  7 Ted Cohen                    8.5        8.5          27
-##  8 Sherry Bilsing-Graham        8.48       8.5          11
-##  9 Ellen Plummer                8.46       8.4          17
-## 10 Andrew Reich                 8.41       8.4          23
-## 11 Wil Calhoun                  8.4        8.3          11
-## 12 Adam Chase                   8.39       8.3          15
-## 13 Brian Buckner                8.38       8.4          15
-## 14 Michael Curtis               8.37       8.4          12
-## 15 Mark Kunerth                 8.35       8.25         10
-## 16 Sebastian Jones              8.34       8.2          15
-## 17 Seth Kurland                 8.28       8.3          13
-```
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; directed_by &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; med_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_episodes &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Kevin S. Bright &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.656604 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; David Schwimmer &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.550000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.55 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Michael Lembeck &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.520833 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; James Burrows &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.506667 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gary Halvorson &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.401852 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gail Mancuso &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.357143 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Peter Bonerz &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.325000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ben Weiss &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.300000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 ---
 # Layouts
