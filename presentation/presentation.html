@@ -69,7 +69,69 @@ friends_wanted_lr &lt;- friends_wanted %&gt;%
 
 &lt;img src="presentation_files/figure-html/tone-vs-imdb-rating-1.png" width="80%" /&gt;
 ---
+# Writer
 
+
+
+
+
+
+```r
+writers %&gt;% 
+  group_by(written_by) %&gt;% 
+  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %&gt;% 
+  arrange(desc(mean_rating))
+```
+
+```
+## # A tibble: 58 x 4
+##    written_by                      mean_rating med_rating n_episodes
+##    &lt;chr&gt;                                 &lt;dbl&gt;      &lt;dbl&gt;      &lt;int&gt;
+##  1 Suzie Villandry                        9.1        9.1           1
+##  2 Gregory S. MalinsMarta Kauffman        9.05       9.05          2
+##  3 Scott SilveriAndrew Reich              9.05       9.05          2
+##  4 Brian Caldirola                        9          9             1
+##  5 Andrew ReichGregory S. Malins          8.95       8.95          2
+##  6 Michael Borkow Jill Condon             8.95       8.95          2
+##  7 Amy Toomin                             8.76       8.7           5
+##  8 David Crane                            8.73       8.7          23
+##  9 Scott SilveriMarta Kauffman            8.72       8.75          4
+## 10 Mike SikowitzMichael Borkow            8.7        8.7           2
+## # … with 48 more rows
+```
+
+Should we consider writers with not many episodes?
+
+---
+#Writer (cont.)
+
+Here we look at writers with 10 or more episodes.
+
+
+```
+## # A tibble: 17 x 4
+##    written_by            mean_rating med_rating n_episodes
+##    &lt;chr&gt;                       &lt;dbl&gt;      &lt;dbl&gt;      &lt;int&gt;
+##  1 David Crane                  8.73       8.7          23
+##  2 Marta Kauffman               8.67       8.5          19
+##  3 Alexa Junge                  8.56       8.4          12
+##  4 Gregory S. Malins            8.55       8.5          16
+##  5 Scott Silveri                8.55       8.5          22
+##  6 Shana Goldberg-Meehan        8.50       8.3          25
+##  7 Ted Cohen                    8.5        8.5          27
+##  8 Sherry Bilsing-Graham        8.48       8.5          11
+##  9 Ellen Plummer                8.46       8.4          17
+## 10 Andrew Reich                 8.41       8.4          23
+## 11 Wil Calhoun                  8.4        8.3          11
+## 12 Adam Chase                   8.39       8.3          15
+## 13 Brian Buckner                8.38       8.4          15
+## 14 Michael Curtis               8.37       8.4          12
+## 15 Mark Kunerth                 8.35       8.25         10
+## 16 Sebastian Jones              8.34       8.2          15
+## 17 Seth Kurland                 8.28       8.3          13
+```
+
+---
 # Layouts
 
 You can use plain text

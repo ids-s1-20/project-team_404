@@ -79,7 +79,7 @@ This visualization enables us to see how the Number of lines spoken by each char
 ```{r rating_per_writer, echo = FALSE}
 friendsWanted %>% 
   group_by(written_by) %>% 
-  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating)) %>% 
+  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>% 
   arrange(desc(mean_rating))
 ```
  In this summary statistic you can see which writers achieved the highest mean IMDB rating. It also becomes clear that the 'written_by' variable does not only contain singular names. We many need to alter this data again to provide only singular names in the 'written_by' variable in order to see more clearly which writers are preferred. 
