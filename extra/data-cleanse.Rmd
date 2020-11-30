@@ -14,7 +14,7 @@ library(friends)
 ```{r writer-cleanse}
 writers <- friends_info %>%
   mutate(written_by = str_remove(written_by, "Story by :")) %>% 
-  mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&")) %>%
+  mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&"))
 
 view(writers)
 
@@ -23,5 +23,6 @@ view(writers)
 ```{r writers-split}
 writers <- writers %>% 
   mutate(written_by = strsplit(as.character(written_by), "\\&")) %>% 
-  unnest(written_by)
+  unnest(written_by) %>% 
+  mutate(written_by = str_squish(written_by))
 ```
