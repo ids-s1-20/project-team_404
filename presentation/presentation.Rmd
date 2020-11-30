@@ -62,18 +62,26 @@ friends_wanted <- friends %>%
   group_by(season, episode) %>% 
   count(speaker) %>%
   merge(friends_info, by=c("episode","season"))
+```
+We should prob do something with regression here before we show the plot? -- i'm trying to 
+find the slope for each speaker and its not working
+```{r friends-speaker-lr}
+#friends_wanted_l <- linear_reg() %>%
+#  set_engine("lm") %>%
+#  fit(imdb_rating ~ n, data = friends_wanted)
+friends_wanted_lr <- friends_wanted %>% 
+  group_by(speaker) %>% 
+  nest() %>% 
+  mutate(model = map(data, ~lm(imdb_rating ~ n, data = friends_wanted))) #) %>% 
+ # unnest()
 
-friends_wanted_l <- linear_reg() %>%
-  set_engine("lm") %>%
-  fit(imdb_rating ~ n, data = friends_wanted)
 
-tidy(friends_wanted_l)
 
 ```
 
 ---
 
-```{r character-vs-rating, echo = FALSE, message=FALSE}
+```{r character-vs-rating, echo = FALSE, message = FALSE}
 friends_wanted %>% 
   ggplot(aes( x = n, y = imdb_rating, color = speaker))+
   geom_point()+
@@ -83,10 +91,10 @@ friends_wanted %>%
   facet_wrap('.~speaker')+
   labs( title = "Episode Ratings vs How much each character spoke",
         x = "Number of Lines",
-        y = "IMDB Rating",
-        color = "Character"
+        y = "IMDB Rating"
       )+
-  scale_color_viridis_d()
+  scale_color_viridis_d()+
+  theme(legend.position = "none") 
 ```
 --
 
@@ -95,7 +103,24 @@ friends_wanted %>%
 ---
 # Tone
 
-
+```{r tone-vs-imdb-rating, echo = FALSE, message = FALSE}
+friends_emotions %>% 
+  group_by(season, episode) %>% 
+  count(emotion) %>%
+  merge(friends_info, by=c("episode","season")) %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = emotion))+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE, 
+              color="black")+
+  facet_wrap('.~emotion')+
+  labs( title = "Episode Ratings vs How many utterances of a certain tone",
+        x = "Number of Utterances",
+        y = "IMDB Rating"
+      )+
+  scale_color_viridis_d()+
+  theme(legend.position = "none") 
+```
 ---
 
 # Layouts

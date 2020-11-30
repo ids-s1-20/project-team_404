@@ -43,12 +43,18 @@ class: inverse, middle, center
 # Characters
 
 
-```
-## # A tibble: 2 x 5
-##   term        estimate std.error statistic  p.value
-##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-## 1 (Intercept)  8.35     0.0308      271.   0       
-## 2 n            0.00306  0.000804      3.81 0.000148
+We should prob do something with regression here before we show the plot? -- i'm trying to 
+find the slope for each speaker and its not working
+
+```r
+#friends_wanted_l &lt;- linear_reg() %&gt;%
+#  set_engine("lm") %&gt;%
+#  fit(imdb_rating ~ n, data = friends_wanted)
+friends_wanted_lr &lt;- friends_wanted %&gt;% 
+  group_by(speaker) %&gt;% 
+  nest() %&gt;% 
+  mutate(model = map(data, ~lm(imdb_rating ~ n, data = friends_wanted))) #) %&gt;% 
+ # unnest()
 ```
 
 ---
@@ -61,7 +67,7 @@ class: inverse, middle, center
 ---
 # Tone
 
-
+&lt;img src="presentation_files/figure-html/tone-vs-imdb-rating-1.png" width="80%" /&gt;
 ---
 
 # Layouts
