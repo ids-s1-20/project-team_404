@@ -68,7 +68,7 @@ friendsWanted %>%
   facet_wrap('.~speaker')+
   labs( title = "Episode Ratings vs How much each character spoke",
         x = "Number of Lines",
-        y = "IMBD Rating",
+        y = "IMDB Rating",
         color = "Character"
       )+
   scale_color_viridis_d()

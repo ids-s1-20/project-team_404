@@ -37,39 +37,64 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 
 class: center, middle
 
-## A statement of the overall goal / research question
-
----
-
-class: inverse, center, middle
-
-# Section title
-
----
-
-# Hello World
-
-- Click the `Knit` button to compile your presentation
-
-- Make sure to commit and push all resulting files to your GitHub repo
+What makes the perfect "Friends" episode?
 
 ---
 
 class: inverse, middle, center
 
-# Using xaringan
+# Which Factors influence IMBD Rating?
 
 ---
 
-# xaringan
+# Characters
 
-- The presentation is created using the `xaringan` package
+```{r data-reconstruct, echo = FALSE}
+friends_wanted <- friends %>%
+  filter( 
+    speaker == "Joey Tribbiani"|
+    speaker == "Chandler Bing"|
+    speaker == "Monica Geller"|
+    speaker == "Phoebe Buffay"|
+    speaker == "Rachel Green"|
+    speaker == "Ross Geller"
+  ) %>% 
+  group_by(season, episode) %>% 
+  count(speaker) %>%
+  merge(friends_info, by=c("episode","season"))
 
-- Use `---` to separate slides and `--` for incremental builds
+friends_wanted_l <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(imdb_rating ~ n, data = friends_wanted)
 
+tidy(friends_wanted_l)
+
+```
+
+---
+
+```{r character-vs-rating, echo = FALSE, message=FALSE}
+friends_wanted %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = speaker))+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE, 
+              color="black")+
+  facet_wrap('.~speaker')+
+  labs( title = "Episode Ratings vs How much each character spoke",
+        x = "Number of Lines",
+        y = "IMDB Rating",
+        color = "Character"
+      )+
+  scale_color_viridis_d()
+```
 --
 
-- Like this
+- Insert Short Summary of visualisation 
+
+---
+# Tone
+
 
 ---
 
