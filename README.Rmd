@@ -35,6 +35,4 @@ If you got your data off the web, make sure to note the retrieval date.
 
 ## References
 
-List any references here. You should, at a minimum, list your data source.
-
 Emil Hvitfeldt, _Friends_, electronic dataset, `friends` R package, <https://github.com/emorynlp/character-mining>

@@ -4,7 +4,7 @@
     <title>The Perfect Friends Episode</title>
     <meta charset="utf-8" />
     <meta name="author" content="Team 404: Sophie Bata-Madden, Natalia Okanikova, Barney Gray" />
-    <meta name="date" content="2020-11-20" />
+    <meta name="date" content="2020-11-30" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # The Perfect Friends Episode
 ### Team 404: Sophie Bata-Madden, Natalia Okanikova, Barney Gray
 ### University of Edinburgh
-### 2020-11-20
+### 2020-11-30
 
 ---
 
@@ -30,42 +30,269 @@ class: center, middle, inverse, title-slide
 
 class: center, middle
 
-## A statement of the overall goal / research question
-
----
-
-class: inverse, center, middle
-
-# Section title
-
----
-
-# Hello World
-
-- Click the `Knit` button to compile your presentation
-
-- Make sure to commit and push all resulting files to your GitHub repo
+What makes the perfect "Friends" episode?
 
 ---
 
 class: inverse, middle, center
 
-# Using xaringan
+# Which Factors influence IMBD Rating?
 
 ---
 
-# xaringan
+# Characters
 
-- The presentation is created using the `xaringan` package
 
-- Use `---` to separate slides and `--` for incremental builds
+We should prob do something with regression here before we show the plot? -- i'm trying to 
+find the slope for each speaker and its not working
 
+```r
+#friends_wanted_l &lt;- linear_reg() %&gt;%
+#  set_engine("lm") %&gt;%
+#  fit(imdb_rating ~ n, data = friends_wanted)
+friends_wanted_lr &lt;- friends_wanted %&gt;% 
+  group_by(speaker) %&gt;% 
+  nest() %&gt;% 
+  mutate(model = map(data, ~lm(imdb_rating ~ n, data = friends_wanted))) #) %&gt;% 
+ # unnest()
+```
+
+---
+
+&lt;img src="presentation_files/figure-html/character-vs-rating-1.png" width="80%" /&gt;
 --
 
-- Like this
+- Insert Short Summary of visualisation 
 
 ---
+# Tone
 
+&lt;img src="presentation_files/figure-html/tone-vs-imdb-rating-1.png" width="80%" /&gt;
+---
+# Writer
+
+
+
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; written_by &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; med_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_episodes &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Suzie Villandry &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.100000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gregory S. MalinsMarta Kauffman &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.050000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scott SilveriAndrew Reich &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.050000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Brian Caldirola &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.000000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Andrew ReichGregory S. Malins &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.950000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Michael Borkow Jill Condon &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.950000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Amy Toomin &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.760000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; David Crane &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.730435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scott SilveriMarta Kauffman &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.725000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mike SikowitzMichael Borkow &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.700000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+The highest rated writer is Suzie Villandry, however she has only written one episode;
+should we consider writers with not many episodes?
+
+---
+#Writer (cont.)
+
+Here we look at the top 10 writers with 10 or more episodes.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; written_by &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; med_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_episodes &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; David Crane &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.730435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Marta Kauffman &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.673684 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Alexa Junge &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.558333 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gregory S. Malins &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.550000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scott Silveri &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.545454 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Shana Goldberg-Meehan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.504000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ted Cohen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.500000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sherry Bilsing-Graham &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.481818 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ellen Plummer &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.464706 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Andrew Reich &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.413044 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+#Director
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; directed_by &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; med_rating &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_episodes &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Kevin S. Bright &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.656604 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; David Schwimmer &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.550000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.55 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Michael Lembeck &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.520833 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; James Burrows &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.506667 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gary Halvorson &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.401852 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gail Mancuso &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.357143 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Peter Bonerz &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.325000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ben Weiss &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.300000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
 # Layouts
 
 You can use plain text

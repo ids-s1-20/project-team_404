@@ -1,0 +1,28 @@
+title: "The Perfect Friends Episode"
+#subtitle: "Presentation subtitle (if any)"
+author: "Team 404: Sophie Bata-Madden, Natalia Okanikova, Barney Gray"
+institute: "University of Edinburgh"
+date: "`r Sys.Date()`"
+---
+
+```{r load-packages, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(broom)
+library(friends)
+```
+
+```{r writer-cleanse}
+writers <- friends_info %>%
+  mutate(written_by = str_remove(written_by, "Story by :")) %>% 
+  mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&"))
+
+view(writers)
+
+```
+
+```{r writers-split}
+writers <- writers %>% 
+  mutate(written_by = strsplit(as.character(written_by), "\\&")) %>% 
+  unnest(written_by) %>% 
+  mutate(written_by = str_squish(written_by))
+```

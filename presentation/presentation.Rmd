@@ -37,42 +37,148 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 
 class: center, middle
 
-## A statement of the overall goal / research question
-
----
-
-class: inverse, center, middle
-
-# Section title
-
----
-
-# Hello World
-
-- Click the `Knit` button to compile your presentation
-
-- Make sure to commit and push all resulting files to your GitHub repo
+What makes the perfect "Friends" episode?
 
 ---
 
 class: inverse, middle, center
 
-# Using xaringan
+# Which Factors influence IMBD Rating?
 
 ---
 
-# xaringan
+# Characters
 
-- The presentation is created using the `xaringan` package
+```{r data-reconstruct, echo = FALSE}
+friends_wanted <- friends %>%
+  filter( 
+    speaker == "Joey Tribbiani"|
+    speaker == "Chandler Bing"|
+    speaker == "Monica Geller"|
+    speaker == "Phoebe Buffay"|
+    speaker == "Rachel Green"|
+    speaker == "Ross Geller"
+  ) %>% 
+  group_by(season, episode) %>% 
+  count(speaker) %>%
+  merge(friends_info, by=c("episode","season"))
+```
+We should prob do something with regression here before we show the plot? -- i'm trying to 
+find the slope for each speaker and its not working
+```{r friends-speaker-lr}
+#friends_wanted_l <- linear_reg() %>%
+#  set_engine("lm") %>%
+#  fit(imdb_rating ~ n, data = friends_wanted)
+friends_wanted_lr <- friends_wanted %>% 
+  group_by(speaker) %>% 
+  nest() %>% 
+  mutate(model = map(data, ~lm(imdb_rating ~ n, data = friends_wanted))) #) %>% 
+ # unnest()
 
-- Use `---` to separate slides and `--` for incremental builds
 
+
+```
+
+---
+
+```{r character-vs-rating, echo = FALSE, message = FALSE}
+friends_wanted %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = speaker))+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE, 
+              color="black")+
+  facet_wrap('.~speaker')+
+  labs( title = "Episode Ratings vs How much each character spoke",
+        x = "Number of Lines",
+        y = "IMDB Rating"
+      )+
+  scale_color_viridis_d()+
+  theme(legend.position = "none") 
+```
 --
 
-- Like this
+- Insert Short Summary of visualisation 
 
 ---
+# Tone
 
+```{r tone-vs-imdb-rating, echo = FALSE, message = FALSE}
+friends_emotions %>% 
+  group_by(season, episode) %>% 
+  count(emotion) %>%
+  merge(friends_info, by=c("episode","season")) %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = emotion))+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE, 
+              color="black")+
+  facet_wrap('.~emotion')+
+  labs( title = "Episode Ratings vs How many utterances of a certain tone",
+        x = "Number of Utterances",
+        y = "IMDB Rating"
+      )+
+  scale_color_viridis_d()+
+  theme(legend.position = "none") 
+
+```
+---
+# Writer
+
+```{r writer-cleanse, echo = FALSE}
+writers <- friends_info %>%
+  mutate(written_by = str_remove(written_by, "Story by :")) %>% 
+  mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&"))
+
+view(writers)
+
+```
+
+```{r writers-split, echo = FALSE}
+writers <- writers %>% 
+  mutate(written_by = strsplit(as.character(written_by), "\\&")) %>% 
+  unnest(written_by) %>% 
+  mutate(written_by = str_squish(written_by))
+```
+
+```{r writer-avg-imdb-rating, echo = FALSE, message = FALSE}
+writers_sum <- writers %>% 
+  group_by(written_by) %>% 
+  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>% 
+  arrange(desc(mean_rating))
+
+kable(head(writers_sum, n = 10), format = "html")
+```
+
+The highest rated writer is Suzie Villandry, however she has only written one episode;
+should we consider writers with not many episodes?
+
+---
+#Writer (cont.)
+
+Here we look at the top 10 writers with 10 or more episodes.
+
+```{r writer-avg-over10, echo = FALSE, message = FALSE}
+writers_sum2 <- writers_sum %>% 
+ filter(n_episodes > 9)
+
+kable(head(writers_sum2, n = 10), format = "html")
+
+```
+---
+#Director
+
+```{r dir-avg-imdb-rating, echo = FALSE, message = FALSE}
+dir_sum <- friends_info %>% 
+  group_by(directed_by) %>% 
+  summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>% 
+  arrange(desc(mean_rating)) %>% 
+  filter(n_episodes > 9)
+
+kable(head(dir_sum, n = 10), format = "html")
+```
+
+---
 # Layouts
 
 You can use plain text
