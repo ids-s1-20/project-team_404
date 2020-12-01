@@ -1,0 +1,35 @@
+
+title: "The Perfect Friends Episode"
+#subtitle: "Presentation subtitle (if any)"
+author: "Team 404: Sophie Bata-Madden, Natalia Okanikova, Barney Gray"
+institute: "University of Edinburgh"
+date: "`r Sys.Date()`"
+---
+
+```{r load-packages, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(tidymodels)
+library(friends)
+```
+
+
+```{r}
+friends_wanted_wider <- friends_wanted %>%
+  pivot_wider(names_from = speaker, values_from = n) %>%
+  arrange(season, episode)
+```
+
+
+
+```{r friends-speaker-lr}
+
+friends_wanted_l <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(imdb_rating ~ `Chandler Bing` + `Rachel Green` + `Ross Geller` + `Phoebe Buffay` + 
+        `Joey Tribbiani` + `Monica Geller`, data = friends_wanted_wider)
+
+tidy(friends_wanted_l)
+
+```
+
+
