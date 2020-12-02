@@ -12,6 +12,8 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -75,7 +77,16 @@ friends_wanted_lr <- friends_wanted %>%
   mutate(model = map(data, ~lm(imdb_rating ~ n, data = friends_wanted))) #) %>% 
  # unnest()
 
+```
 
+```{r friends-speaker-lr}
+
+friends_speaker_lr <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(imdb_rating ~ `Chandler Bing` + `Rachel Green` + `Ross Geller` + `Phoebe Buffay` + 
+        `Joey Tribbiani` + `Monica Geller`, data = friends_wanted_wider)
+
+tidy(friends_wanted_l)
 
 ```
 
@@ -122,6 +133,17 @@ friends_emotions %>%
   theme(legend.position = "none") 
 
 ```
+
+```{r friends-tone-lr}
+  
+friends_tone_lr <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
+
+tidy(friends_tone_lr)
+
+```
+
 ---
 # Writer
 
@@ -130,7 +152,7 @@ writers <- friends_info %>%
   mutate(written_by = str_remove(written_by, "Story by :")) %>% 
   mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&"))
 
-view(writers)
+#view(writers)
 
 ```
 

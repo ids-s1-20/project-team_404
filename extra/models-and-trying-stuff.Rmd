@@ -12,18 +12,17 @@ library(tidymodels)
 library(friends)
 ```
 
+##speaker
 
-```{r}
+```{r pivot-wider-for-speaker-model}
 friends_wanted_wider <- friends_wanted %>%
   pivot_wider(names_from = speaker, values_from = n) %>%
   arrange(season, episode)
 ```
 
-
-
 ```{r friends-speaker-lr}
 
-friends_wanted_l <- linear_reg() %>%
+friends_speaker_lr <- linear_reg() %>%
   set_engine("lm") %>%
   fit(imdb_rating ~ `Chandler Bing` + `Rachel Green` + `Ross Geller` + `Phoebe Buffay` + 
         `Joey Tribbiani` + `Monica Geller`, data = friends_wanted_wider)
@@ -31,5 +30,39 @@ friends_wanted_l <- linear_reg() %>%
 tidy(friends_wanted_l)
 
 ```
+
+##tone
+
+```{r prepare-data-for-tone-model}
+friends_emotions_wider <- friends_emotions %>%
+  group_by(season,episode,emotion) %>%
+  count()%>%
+  pivot_wider(names_from = emotion, values_from = n)
+```
+
+```{r join-imdb}
+friends_emotions_wider <- friends_emotions_wider %>%
+  left_join(friends_wanted_wider, season = season, episode = episode) %>%
+  select(- `Chandler Bing`, - `Rachel Green`, - `Ross Geller`, - `Monica Geller`, - `Joey Tribbiani`, -`Phoebe Buffay`, -`air_date`, -`us_views_millions`, -`written_by`, -`directed_by` )
+```
+
+
+```{r friends-tone-lr}
+  
+friends_tone_lr <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
+
+tidy(friends_tone_lr)
+
+```
+
+##df to add imdb rating easily
+
+```{r data-to-add-imdb}
+imdb_to_add <- friends_emotions_wider %>%
+  select(season, episode, imdb_rating)
+```
+
 
 
