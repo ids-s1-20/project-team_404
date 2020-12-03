@@ -72,8 +72,5 @@ sure to note the retrieval date.
 
 ## References
 
-List any references here. You should, at a minimum, list your data
-source.
-
 Emil Hvitfeldt 2020, *Friends*, electronic dataset, `friends` R package,
 <https://github.com/emorynlp/character-mining>

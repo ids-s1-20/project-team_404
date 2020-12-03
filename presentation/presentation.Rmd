@@ -257,7 +257,7 @@ According to our models, the perfect "Friends" episode should be:
 
 The actual "perfect" episode is:
 
-```{r}
+```{r info-arranged, include=FALSE}
 friends_info_arranged <- friends_info %>%
   arrange(desc(imdb_rating))%>%
   select(season, episode, title, imdb_rating, written_by, directed_by)
