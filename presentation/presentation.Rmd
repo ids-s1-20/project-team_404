@@ -31,7 +31,7 @@ library(showtext)
 
 ```{r setup, include=FALSE}
 # For better figure resolution
-knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.45, out.width = "80%")
+knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.6, out.width = "80%")
 ```
 
 ```{r load-data, include=FALSE}
@@ -118,8 +118,6 @@ friends_wanted %>%
 ```
 
 
-This plot shows us that Ross and Monica have the highest impact in terms of when they have more lines the IMDB rating of the show on average increases more than when the other characters do. It seems though that as every characters number of lines increases the rating does so too slightly. 
-
 ---
 # Tone
 ```{r prepare-data-for-tone-model, include = FALSE}
@@ -169,11 +167,7 @@ friends_emotions %>%
         plot.background = element_rect(fill = "#fff7c4")) 
 
 ```
-
 Note: we only have info on first 4 seasons
-
-This plot suggests that as the number of utterances of peaceful, powerful and scared tone increase as does the average rating. However, episodes that have a more mad or sad tone decrease in rating.
-
 ---
 
 #Writer
@@ -205,7 +199,7 @@ kable(head(writers_sum2, n = 10), format = "html")
 
 ```
 --
-This shows that according to mean and median rating, David Crane is the most popular writer for the show of those who wrote more than 10. Seeing as shows are often co-written it is fair to also note that the 'ideal' episode may be written by both Marta Kauffman and David Crane. 
+ 
 ---
 #Director
 
@@ -219,7 +213,6 @@ dir_sum <- friends_info %>%
 kable(head(dir_sum, n = 10), format = "html")
 ```
 
-Kevin S. Bright has the highest mean and median rating cementing him as the top director. He also directed many more episodes than most other directors at 53.
 ---
 # Season
 
