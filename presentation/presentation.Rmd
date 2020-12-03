@@ -116,7 +116,6 @@ friends_wanted %>%
 ```
 --
 
-- Insert Short Summary of visualisation 
 
 
 ---
