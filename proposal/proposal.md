@@ -94,19 +94,19 @@ removed.
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-    ## # A tibble: 102 x 3
-    ##    written_by                                             mean_rating med_rating
-    ##    <chr>                                                        <dbl>      <dbl>
-    ##  1 Jill Condon & Amy Toomin                                      9.5        9.5 
-    ##  2 Story by : Brian BoyleTeleplay by : Suzie Villandry           9.1        9.1 
-    ##  3 Story by : Zachary RosenblattTeleplay by : Adam Chase         9.1        9.1 
-    ##  4 Gregory S. MalinsMarta Kauffman & David Crane                 9.05       9.05
-    ##  5 Shana Goldberg-Meehan & Scott SilveriAndrew Reich & T…        9.05       9.05
-    ##  6 Story by : Brian CaldirolaTeleplay by : Sherry Bilsin…        9          9   
-    ##  7 Gregory S. Malins                                             8.97       9.2 
-    ##  8 Michael BorkowStory by : Jill Condon & Amy ToominTele…        8.95       8.95
-    ##  9 Ted Cohen & Andrew ReichGregory S. Malins & Scott Sil…        8.95       8.95
-    ## 10 Robert Carlock & Dana Klein Borkow                            8.9        8.9 
+    ## # A tibble: 102 x 4
+    ##    written_by                                  mean_rating med_rating n_episodes
+    ##    <chr>                                             <dbl>      <dbl>      <int>
+    ##  1 Jill Condon & Amy Toomin                           9.5        9.5           6
+    ##  2 Story by : Brian BoyleTeleplay by : Suzie …        9.1        9.1           6
+    ##  3 Story by : Zachary RosenblattTeleplay by :…        9.1        9.1           6
+    ##  4 Gregory S. MalinsMarta Kauffman & David Cr…        9.05       9.05         12
+    ##  5 Shana Goldberg-Meehan & Scott SilveriAndre…        9.05       9.05         12
+    ##  6 Story by : Brian CaldirolaTeleplay by : Sh…        9          9             6
+    ##  7 Gregory S. Malins                                  8.97       9.2          18
+    ##  8 Michael BorkowStory by : Jill Condon & Amy…        8.95       8.95         12
+    ##  9 Ted Cohen & Andrew ReichGregory S. Malins …        8.95       8.95         12
+    ## 10 Robert Carlock & Dana Klein Borkow                 8.9        8.9           6
     ## # … with 92 more rows
 
 In this summary statistic you can see which writers achieved the highest
