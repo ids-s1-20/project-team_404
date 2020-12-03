@@ -5,12 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Team 404: Sophie Bata-Madden, Natalia Okanikova, Barney Gray" />
     <meta name="date" content="2020-12-03" />
-<<<<<<< HEAD
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
-=======
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
->>>>>>> ff15738823028c43c533df09e5791bc7a7c7b8dd
   </head>
   <body>
     <textarea id="source">
@@ -54,15 +49,6 @@ class: inverse, middle, center
 
 
 
-```r
-friends_speaker_lr &lt;- linear_reg() %&gt;%
-  set_engine("lm") %&gt;%
-  fit(imdb_rating ~ `Chandler Bing` + `Rachel Green` + `Ross Geller` + `Phoebe Buffay` + 
-        `Joey Tribbiani` + `Monica Geller`, data = friends_wanted_wider)
-
-tidy(friends_speaker_lr)
-```
-
 ```
 ## # A tibble: 7 x 5
 ##   term               estimate std.error statistic   p.value
@@ -74,6 +60,14 @@ tidy(friends_speaker_lr)
 ## 5 `Phoebe Buffay`   0.00226     0.00227    0.996  3.21e-  1
 ## 6 `Joey Tribbiani`  0.000982    0.00198    0.495  6.21e-  1
 ## 7 `Monica Geller`   0.00449     0.00226    1.98   4.87e-  2
+```
+
+```
+## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1    0.0816        0.0576 0.387      3.39 0.00317     6  -107.  231.  258.
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;
 ```
 
 ---
@@ -90,14 +84,6 @@ tidy(friends_speaker_lr)
 
 
 
-```r
-friends_tone_lr &lt;- linear_reg() %&gt;%
-  set_engine("lm") %&gt;%
-  fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
-
-tidy(friends_tone_lr)
-```
-
 ```
 ## # A tibble: 8 x 5
 ##   term         estimate std.error statistic  p.value
@@ -110,6 +96,14 @@ tidy(friends_tone_lr)
 ## 6 Powerful    -0.000416   0.00620   -0.0671 9.47e- 1
 ## 7 Sad         -0.00489    0.0107    -0.456  6.50e- 1
 ## 8 Scared       0.00163    0.00489    0.333  7.40e- 1
+```
+
+```
+## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1    0.0821      0.000809 0.377      1.01   0.431     7  -34.4  86.8  109.
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;
 ```
 
 Note: we only have info on first 4 seasons
@@ -344,15 +338,9 @@ Here we look at the top 10 writers with 10 or more episodes.
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 ---
 # IMDB Score
-
-
-```
-## Warning: Continuous limits supplied to discrete scale.
-## Did you mean `limits = factor(...)` or `scale_*_continuous()`?
-```
 
 &lt;img src="presentation_files/figure-html/imdb-rating-over-time-1.png" width="80%" /&gt;
 
@@ -379,7 +367,7 @@ or text in two columns `\(^*\)`
 [*] And add footnotes
 ]
 =======
->>>>>>> ff15738823028c43c533df09e5791bc7a7c7b8dd
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; ff15738823028c43c533df09e5791bc7a7c7b8dd
 
 ---
 # Outcome

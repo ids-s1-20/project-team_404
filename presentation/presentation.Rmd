@@ -84,7 +84,7 @@ friends_wanted_wider <- friends_wanted %>%
   arrange(season, episode)
 ```
 
-```{r friends-speaker-lr}
+```{r friends-speaker-lr, echo = FALSE}
 
 friends_speaker_lr <- linear_reg() %>%
   set_engine("lm") %>%
@@ -93,6 +93,7 @@ friends_speaker_lr <- linear_reg() %>%
 
 tidy(friends_speaker_lr)
 
+glance(friends_speaker_lr)
 ```
 
 ---
@@ -133,12 +134,14 @@ friends_emotions_wider <- friends_emotions_wider %>%
   select(- `Chandler Bing`, - `Rachel Green`, - `Ross Geller`, - `Monica Geller`, - `Joey Tribbiani`, -`Phoebe Buffay`, -`air_date`, -`us_views_millions`, -`written_by`, -`directed_by` )
 ```
 
-```{r friends-tone-lr}
+```{r friends-tone-lr, echo = FALSE}
 friends_tone_lr <- linear_reg() %>%
   set_engine("lm") %>%
   fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
 
 tidy(friends_tone_lr)
+
+glance(friends_tone_lr)
 ```
 
 Note: we only have info on first 4 seasons
