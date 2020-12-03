@@ -31,7 +31,7 @@ library(showtext)
 
 ```{r setup, include=FALSE}
 # For better figure resolution
-knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618, out.width = "80%")
+knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.45, out.width = "80%")
 ```
 
 ```{r load-data, include=FALSE}
@@ -116,10 +116,7 @@ friends_wanted %>%
   theme(legend.position = "none",
         plot.background = element_rect(fill = "#fff7c4") )
 ```
-<<<<<<< HEAD
-=======
---
->>>>>>> 7e31d7cfded4d4c3fb5126a99dee793285db7781
+
 
 This plot shows us that Ross and Monica have the highest impact in terms of when they have more lines the IMDB rating of the show on average increases more than when the other characters do. It seems though that as every characters number of lines increases the rating does so too slightly. 
 
@@ -174,8 +171,6 @@ friends_emotions %>%
 ```
 
 Note: we only have info on first 4 seasons
-
--- 
 
 This plot suggests that as the number of utterances of peaceful, powerful and scared tone increase as does the average rating. However, episodes that have a more mad or sad tone decrease in rating.
 
