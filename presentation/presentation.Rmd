@@ -97,6 +97,7 @@ glance(friends_speaker_lr)
 ```
 
 ---
+# Characters
 
 ```{r character-vs-rating, echo = FALSE, message = FALSE}
 friends_wanted %>% 
@@ -115,8 +116,6 @@ friends_wanted %>%
   theme(legend.position = "none",
         plot.background = element_rect(fill = "#fff7c4") )
 ```
-<<<<<<< HEAD
---
 
 This plot shows us that Ross and Monica have the highest impact in terms of when they have more lines the IMDB rating of the show on average increases more than when the other characters do. It seems though that as every characters number of lines increases the rating does so too slightly. 
 =======
@@ -219,7 +218,7 @@ writers_sum2 <- writers_sum %>%
 kable(head(writers_sum2, n = 10), format = "html")
 
 ```
-
+--
 This shows that according to mean and median rating, David Crane is the most popular writer for the show of those who wrote more than 10. Seeing as shows are often co-written it is fair to also note that the 'ideal' episode may be written by both Marta Kauffman and David Crane. 
 ---
 #Director
