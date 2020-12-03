@@ -237,31 +237,29 @@ According to our models, the perfect "Friends" episode should be:
  - directed by Kevin S. Bright (or David Schwimmer)
  - scared and peaceful 
  - mostly the Gellers talking 
- 
-```{r predicted-best-episode, echo = FALSE}
-#writers %>%
-#  left_join (friends_wanted_wider, season = season, episode = episode)%>%
- # filter(written_by == "David Crane" | written_by == "Suzie Villandry",
- #        directed_by== "Kevin S. Bright" | directed_by == "David Schwimmer")%>%
-```
 
 ---
-# Outcome
+# The actual "perfect" episode
+Top rated episodes:
 
-The actual "perfect" episode is:
-
-```{r info-arrange, echo = FALSE}
-friends_info_arranged <- friends_info %>%
-  arrange(desc(imdb_rating))%>%
-  select(season, episode, title, imdb_rating, written_by, directed_by)
-
-kable(head(friends_info_arranged, n=5))
-```
- 
-```{r}
+```{r friends-outcome-dataset,include=FALSE}
 friends_outcome <- friends_info %>%
   left_join(friends_wanted_wider, season = season, episode = episode)%>%
-  view(friends_outcome)
+  select(- title,
+         - air_date,
+         - us_views_millions,
+         -season_episode)
 ```
- 
+
+```{r friends-outcome-mutate, echo = FALSE}
+friends_outcome <- friends_outcome %>%
+  rename ("imdb" = "imdb_rating",
+         s = season,
+         e = episode)%>%
+  arrange(desc(imdb))
+
+kable(head(friends_outcome, n=5))
+```
+S5E14: The One Where Everybody Finds Out,      S10E17-18: The Last One
+
 
