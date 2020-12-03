@@ -117,6 +117,31 @@ friends_wanted %>%
         plot.background = element_rect(fill = "#fff7c4") )
 ```
 
+---
+
+# Tone
+```{r tone-vs-imdb-rating, echo = FALSE, message = FALSE}
+friends_emotions %>% 
+  group_by(season, episode) %>% 
+  count(emotion) %>%
+  merge(friends_info, by=c("episode","season")) %>% 
+  ggplot(aes( x = n, y = imdb_rating, color = emotion))+
+  geom_point()+
+  geom_smooth(method = "lm",
+              se = FALSE, 
+              color="black")+
+  facet_wrap('.~emotion')+
+  labs( title = "Episode Ratings vs How many utterances of a certain tone",
+        x = "Number of Utterances",
+        y = "IMDB Rating"
+      )+
+  scale_color_manual(values = c("#a8d8ff", "#ff4238", "#007ade", "#9a000b", "#00009e", 
+                                "#ff817a", "#42a2db")) +
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "#fff7c4")) 
+
+```
+
 
 ---
 # Tone
@@ -144,30 +169,6 @@ glance(friends_tone_lr)
 
 Note: we only have info on first 4 seasons
 
----
-# Tone
-```{r tone-vs-imdb-rating, echo = FALSE, message = FALSE}
-friends_emotions %>% 
-  group_by(season, episode) %>% 
-  count(emotion) %>%
-  merge(friends_info, by=c("episode","season")) %>% 
-  ggplot(aes( x = n, y = imdb_rating, color = emotion))+
-  geom_point()+
-  geom_smooth(method = "lm",
-              se = FALSE, 
-              color="black")+
-  facet_wrap('.~emotion')+
-  labs( title = "Episode Ratings vs How many utterances of a certain tone",
-        x = "Number of Utterances",
-        y = "IMDB Rating"
-      )+
-  scale_color_manual(values = c("#a8d8ff", "#ff4238", "#007ade", "#9a000b", "#00009e", 
-                                "#ff817a", "#42a2db")) +
-  theme(legend.position = "none",
-        plot.background = element_rect(fill = "#fff7c4")) 
-
-```
-Note: we only have info on first 4 seasons
 ---
 
 #Writer
@@ -261,5 +262,3 @@ friends_outcome <- friends_outcome %>%
 kable(head(friends_outcome, n=5))
 ```
 S5E14: The One Where Everybody Finds Out,      S10E17-18: The Last One
-
-
