@@ -4,41 +4,41 @@ by Team 404
 
 ## Summary
 
-For our project, we decided to look into one of the most popular tv shows ever, Friends, and see where does the popularity actually come from in individual episodes.
-We worked with the `friends` package from tidyverse. It contains a transcript of all the dialogues from each episode along with the speaker and emotion in it, and also information on the writer, director, imdb rating etc.
-So, the question is, what influences the imdb rating?
+For our project, we decided to look into one of the most well-known TV shows, Friends, and see what influences the popularity of each individual episode.
+We worked with the `friends` package from tidyverse. It contains a transcript of all the dialogue from each episode, along with the speaker and emotion in it, and also information on the writer, director, IMDB rating etc.
+So, the question is: what influences the IMDB rating?
  
-First, the 6 friends (Monica, Rachel, Joey, Chandler, Phoebe and Ross) might not be equally popular with the audience, and people maybe like to see (or hear in this case) some of them more than the others.
-We looked into what the number of utterances of each character does with the ratings, using a model and a plot.
-An interesting surprise was the estimate of the slope from the model did not match the slope on the plot. That's because the estimate shows the relationship between additional lines of each character, whereas the plot shows the number of utterances as if other characters didn’t exist.
-Here we might note that it would be more precise to study the interactions between particular characters, but that would require a more developed data set or much more work with this one.
+Firstly, the 6 friends (Monica, Rachel, Joey, Chandler, Phoebe and Ross) might not be equally popular with the audience, and people may like to see (or hear in this case) some of them, more than the others.
+We looked into how the number of utterances from each character influences the rating, using a model and a plot.
+An interesting surprise was the estimate of the slope from the model did not match the slope on the plot. That's because the estimate shows the relationship between additional lines of each character, whereas the plot shows the number of utterances as if other characters did not exist.
+Here we might note that it would be more precise to study the interactions between particular characters, but that would require a more detailed data set that what we are working with.
 However, from the sources that we have now, it seems that audience loves to see the Geller siblings the most.
  
 Next factor that we examined is the tone, or the emotion, that is present in each episode.
-All lines are sorted into 7 tone categories:  Joyful, Mad, Peaceful, Neutral, Powerful, Sad, Scared. We looked at how the level of each emotion affected the episode ratings with the same tools as we did in previous slides.
+All lines are sorted into 7 tone categories:  Joyful, Mad, Peaceful, Neutral, Powerful, Sad or Scared. We looked at how the level of each emotion affected the episode ratings with the same tools as we did in previous slides.
 The results show that:
-·         people really don’t like to see negative emotions like anger and sadness
-·         Neutral and joyful isn't particularly appealing either, maybe it's boring?
-·         The best episodes are where people are peaceful, powerful and, surprisingly, scared
-Here we have to note however that the data set only provided information on the first 4 seasons.
+·         Audiences do not rate episodes high in negative emotions like anger and sadness highly
+·         Neutral and joyful episodes are not too appealing either, maybe it's boring?
+·         The best episodes are where the most prominant tones are are peaceful, powerful and, surprisingly, scared
+Here we have to note that the data set only provides information on the first 4 seasons.
  
-Another potential difference in popularity may be caused by who was the writer and the director of the episode. There are multiple writers and directors that contributed throughout the 10 seasons, often working together too.
+Another potential difference in popularity may be caused by who  the writer and the director were of the episode. There are multiple writers and directors that contributed throughout the 10 seasons, often working together too.
  
-We peaked at the top rated writers, however most of them have only written one or a few episodes, as we can see in the right column. It's not very reliable, or fair, to compare them with the writers of multiple episodes, so we decided to focus on the ones that have written 10 or more episodes, and the most successful writer seems to be David Crane followed by Marta Kauffman.
+We first looked at the top average ratingsfor the writers, however, when also looking at the number of episodes each have written, most of the ones shown have only written one, or a few episodes. It is not very reliable to compare them with the writers of multiple episodes, so we decided to focus on the ones that have written 10 or more episodes, and the most successful writer seems to be David Crane followed by Marta Kauffman.
 It's worth noting that these two co-wrote a lot of episodes.
-An interesting thing to point out is also that there is a great distribution of episodes between the writers, unlike some other tv shows that are mostly written by the same person/team.
+An interesting thing to point out is also that there is a great distribution of episodes between the writers, unlike some other TV shows that are mostly written by the same person/team.
  
-Looking at the directors, the most successful ones are Kevin S. Bright and David Schwimmer, who also played Ross.
+Looking at the directors, the most highly rated ones are Kevin S. Bright and David Schwimmer, who also played Ross.
  
 We thought we would also look at how the rating developed throughout the seasons, after all, the show ran for a decade, and a lot can change in that time.
 Our plot doesn't show any significant change in popularity throughout seasons, but we can see there is a certain level of ratings for each season that most episodes tend to reach, for example 8.5 in the 4th season.
  
 We've reviewed some of the factors affecting the imdb rating, and for each of them, we found what should *theoretically* add up to the highest-rated episode.
 That episode should be:
-·          written by David Crane (or Suzie Villandry)
+·         Written by David Crane (or Suzie Villandry)
 ·         Directed by Kevin S. Bright (or David Schwimmer)
 ·         Mostly Monica and Ross talking
-·         In a peaceful and scared tone.
+·         In a peaceful and/or scared tone.
  
 Now let's look at the actual best-rated episodes. There are 2 episodes that reached 9.7 rating, one of them being the final, which is a double episode.
  
