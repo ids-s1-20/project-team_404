@@ -6,6 +6,7 @@ institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
+    css: xaringan-themer.css
     lib_dir: libs
     nature:
       ratio: "16:9"
@@ -24,6 +25,7 @@ library(tidymodels)
 library(palmerpenguins)
 library(knitr)
 library(friends)
+library(xaringanthemer)
 ```
 
 ```{r setup, include=FALSE}
@@ -37,9 +39,18 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 ```
 
 
+```{r xaringan-themer, include = FALSE, message=FALSE}
+style_duo_accent(
+  primary_color = "#b0e2ff",
+  secondary_color = "#ffa8a3",
+  background_color = "#fff7c4"
+  )
+```
+
+
 class: center, middle
 
-What makes the perfect "Friends" episode?
+# What makes the perfect "Friends" episode?
 
 ---
 
@@ -65,18 +76,11 @@ friends_wanted <- friends %>%
   count(speaker) %>%
   merge(friends_info, by=c("episode","season"))
 ```
-We should prob do something with regression here before we show the plot? -- i'm trying to 
-find the slope for each speaker and its not working
-```{r friends-speaker-lr}
-#friends_wanted_l <- linear_reg() %>%
-#  set_engine("lm") %>%
-#  fit(imdb_rating ~ n, data = friends_wanted)
-friends_wanted_lr <- friends_wanted %>% 
-  group_by(speaker) %>% 
-  nest() %>% 
-  mutate(model = map(data, ~lm(imdb_rating ~ n, data = friends_wanted))) #) %>% 
- # unnest()
 
+```{r pivot-wider-for-speaker-model, include=FALSE}
+friends_wanted_wider <- friends_wanted %>%
+  pivot_wider(names_from = speaker, values_from = n) %>%
+  arrange(season, episode)
 ```
 
 ```{r friends-speaker-lr}
@@ -86,7 +90,7 @@ friends_speaker_lr <- linear_reg() %>%
   fit(imdb_rating ~ `Chandler Bing` + `Rachel Green` + `Ross Geller` + `Phoebe Buffay` + 
         `Joey Tribbiani` + `Monica Geller`, data = friends_wanted_wider)
 
-tidy(friends_wanted_l)
+tidy(friends_speaker_lr)
 
 ```
 
@@ -105,7 +109,8 @@ friends_wanted %>%
         y = "IMDB Rating"
       )+
   scale_color_viridis_d()+
-  theme(legend.position = "none") 
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "#fff7c4") )
 ```
 --
 
@@ -130,9 +135,24 @@ friends_emotions %>%
         y = "IMDB Rating"
       )+
   scale_color_viridis_d()+
-  theme(legend.position = "none") 
+  theme(legend.position = "none",
+        plot.background = element_rect(fill = "#fff7c4")) 
 
 ```
+
+```{r prepare-data-for-tone-model, include = FALSE}
+friends_emotions_wider <- friends_emotions %>%
+  group_by(season,episode,emotion) %>%
+  count()%>%
+  pivot_wider(names_from = emotion, values_from = n)
+```
+
+```{r join-imdb, include=FALSE}
+friends_emotions_wider <- friends_emotions_wider %>%
+  left_join(friends_wanted_wider, season = season, episode = episode) %>%
+  select(- `Chandler Bing`, - `Rachel Green`, - `Ross Geller`, - `Monica Geller`, - `Joey Tribbiani`, -`Phoebe Buffay`, -`air_date`, -`us_views_millions`, -`written_by`, -`directed_by` )
+```
+
 
 ```{r friends-tone-lr}
   
