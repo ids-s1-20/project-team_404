@@ -260,7 +260,7 @@ According to our models, the perfect "Friends" episode should be:
 ---
 # Outcome
 
-the actual "perfect" episode is:
+The actual "perfect" episode is:
 
 ```{r}
 friends_info_arranged <- friends_info %>%
