@@ -71,7 +71,7 @@ imdb_to_add <- friends_emotions_wider %>%
 writers %>%
   left_join (friends_wanted_wider, season = season, episode = episode)%>%
   filter(written_by == "David Crane" | written_by == "Suzie Villandry",
-         direc
+         directed_by== "Kevin S. Bright" | directed_by == "David Schwimmer")
 
 ```
 
