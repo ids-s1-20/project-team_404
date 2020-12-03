@@ -45,7 +45,7 @@ Now let's look at the actual best-rated episodes. There are 2 episodes that reac
 Season 5, ep 14:
 ·         Written by Alexa Junge
 ·         Directed bu Michael Lembeck
-·         Pheobe and Chandler spoke the most
+·         Pheobe, Chandler and Rachel spoke the most
 ·         (data not available)
 What happened?
 The gang found out about Monica and Chandler being in a relationship.
@@ -53,10 +53,12 @@ The gang found out about Monica and Chandler being in a relationship.
 Season 10, ep 17:
 ·         Written by Marta Kauffman & David Crane
 ·         Directed by Kevin S. Bright
-·         Ross and Joey spoke the most
+·         Ross and Joey spoke the most, Monica the least
 ·         (data not available)
 What happened?
 The final episode, story comes to a happy end.
+
+Seems our predictions need improvements.
  
 In conclusion, we have been able to identify several factors which certainly contribute to a higher IMDB rating. It is clear that when Kevin S. Bright is directing and one or both of Marta Kauffman and David Crane is writing it leads to a more highly rated episode, as well as when the Geller siblings are more involved with a mix of peaceful and scared tone to the episode. However, there are variables which were not included in the dataset, for example whether or not an episode contained a scene which has particular importance to the story-line, or factors which are tough to quantify, for example how funny the jokes in that episode are. These are both things which would influence a viewers enjoyment of an episode and hence increase the IMDB score. So whilst it is near impossible to detail a perfect episode we have certainly outlined criteria that make an episode better. 
 ## Presentation
