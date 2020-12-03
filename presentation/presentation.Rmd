@@ -231,12 +231,26 @@ kable(head(dir_sum, n = 10), format = "html")
 ---
 # Outcome
 
-The perfect "Friends" episode:
+According to our models, the perfect "Friends" episode should be:
  - written by David Crane (or Suzie Villandry)
  - directed by Kevin S. Bright (or David Schwimmer)
  - scared and peaceful 
  - mostly the Gellers talking 
  
+---
+# Outcome
+
+the actual "perfect" episode is:
+
+```{r}
+friends_info_arranged <- friends_info %>%
+  arrange(desc(imdb_rating))%>%
+  select(season, episode, title,imdb_rating, written_by, directed_by)
+
+kable(head(friends_info_arranged, n = 10))
+```
+ I haven't added how much each character speaks yet but will do 
+
 ---
 # Layouts
 
