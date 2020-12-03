@@ -249,8 +249,6 @@ friends_info %>%
   theme(axis.text.x = element_text(angle=45),  plot.background = element_rect(fill = "#fff7c4")) +
   scale_x_discrete(breaks = c(1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1, 10.1))
 
-view(friends_info)
-
 ```
 
 ---
