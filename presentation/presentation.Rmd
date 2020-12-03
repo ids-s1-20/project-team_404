@@ -84,7 +84,7 @@ friends_wanted_wider <- friends_wanted %>%
   arrange(season, episode)
 ```
 
-```{r friends-speaker-lr}
+```{r friends-speaker-lr, echo = FALSE}
 
 friends_speaker_lr <- linear_reg() %>%
   set_engine("lm") %>%
@@ -93,6 +93,7 @@ friends_speaker_lr <- linear_reg() %>%
 
 tidy(friends_speaker_lr)
 
+glance(friends_speaker_lr)
 ```
 
 ---
@@ -116,7 +117,7 @@ friends_wanted %>%
 ```
 --
 
-
+This plot shows us that Ross and Monica have the highest impact in terms of when they have more lines the IMDB rating of the show on average increases more than when the other characters do. It seems though that as every characters number of lines increases the rating does so too slightly. 
 
 ---
 # Tone
@@ -132,12 +133,14 @@ friends_emotions_wider <- friends_emotions_wider %>%
   select(- `Chandler Bing`, - `Rachel Green`, - `Ross Geller`, - `Monica Geller`, - `Joey Tribbiani`, -`Phoebe Buffay`, -`air_date`, -`us_views_millions`, -`written_by`, -`directed_by` )
 ```
 
-```{r friends-tone-lr}
+```{r friends-tone-lr, echo = FALSE}
 friends_tone_lr <- linear_reg() %>%
   set_engine("lm") %>%
   fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
 
 tidy(friends_tone_lr)
+
+glance(friends_tone_lr)
 ```
 
 Note: we only have info on first 4 seasons
@@ -167,6 +170,10 @@ friends_emotions %>%
 ```
 
 Note: we only have info on first 4 seasons
+
+-- 
+
+This plot suggests that as the number of utterances of peaceful, powerful and scared tone increase as does the average rating. However, episodes that have a more mad or sad tone decrease in rating.
 
 ---
 # Writer
@@ -209,6 +216,8 @@ writers_sum2 <- writers_sum %>%
 kable(head(writers_sum2, n = 10), format = "html")
 
 ```
+
+This shows that according to mean and median rating, David Crane is the most popular writer for the show of those who wrote more than 10. Seeing as shows are often co-written it is fair to also note that the 'ideal' episode may be written by both Marta Kauffman and David Crane. 
 ---
 #Director
 
@@ -222,7 +231,7 @@ dir_sum <- friends_info %>%
 kable(head(dir_sum, n = 10), format = "html")
 ```
 
-<<<<<<< HEAD
+Kevin S. Bright has the highest mean and median rating cementing him as the top director. He also directed many more episodes than most other directors at 53.
 ---
 # IMDB Score
 
@@ -240,31 +249,6 @@ friends_info %>%
 view(friends_info)
 
 ```
-
----
-
-
-
-
-# Layouts
-
-You can use plain text
-
-- or bullet points
-
-.pull-left[
-or text in two columns $^*$
-]
-.pull-right[
-- like
-- this
-]
-
-.footnote[
-[*] And add footnotes
-]
-=======
->>>>>>> ff15738823028c43c533df09e5791bc7a7c7b8dd
 
 ---
 # Outcome
