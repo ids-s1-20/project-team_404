@@ -285,28 +285,13 @@ According to our models, the perfect "Friends" episode should be:
 The actual "perfect" episode is:
 
 
-```r
-friends_info_arranged &lt;- friends_info %&gt;%
-  arrange(desc(imdb_rating))%&gt;%
-  select(season, episode, title, imdb_rating, written_by, directed_by)
-
-kable(head(friends_info_arranged, n = 10))
-```
-
-
-
-| season| episode|title                              | imdb_rating|written_by                                                                                           |directed_by     |
-|------:|-------:|:----------------------------------|-----------:|:----------------------------------------------------------------------------------------------------|:---------------|
-|      5|      14|The One Where Everybody Finds Out  |         9.7|Alexa Junge                                                                                          |Michael Lembeck |
-|     10|      17|The Last One                       |         9.7|Marta Kauffman &amp; David Crane                                                                         |Kevin S. Bright |
-|     10|      18|The Last One                       |         9.7|Marta Kauffman &amp; David Crane                                                                         |Kevin S. Bright |
-|      4|      12|The One with the Embryos           |         9.5|Jill Condon &amp; Amy Toomin                                                                             |Kevin S. Bright |
-|      2|      14|The One with the Prom Video        |         9.4|Alexa Junge                                                                                          |James Burrows   |
-|      6|      25|The One with the Proposal          |         9.3|Shana Goldberg-Meehan &amp; Scott SilveriAndrew Reich &amp; Ted Cohen                                        |Kevin S. Bright |
-|      8|       4|The One with the Videotape         |         9.3|Scott Silveri                                                                                        |Kevin S. Bright |
-|      8|       9|The One with the Rumor             |         9.3|Shana Goldberg-Meehan                                                                                |Gary Halvorson  |
-|      4|      24|The One with Ross' Wedding         |         9.2|Michael BorkowStory by : Jill Condon &amp; Amy ToominTeleplay by : Shana Goldberg-Meehan &amp; Scott Silveri |Kevin S. Bright |
-|      5|       8|The One with All the Thanksgivings |         9.2|Gregory S. Malins                                                                                    |Kevin S. Bright |
+| season| episode|title                             | imdb_rating|written_by                   |directed_by     |
+|------:|-------:|:---------------------------------|-----------:|:----------------------------|:---------------|
+|      5|      14|The One Where Everybody Finds Out |         9.7|Alexa Junge                  |Michael Lembeck |
+|     10|      17|The Last One                      |         9.7|Marta Kauffman &amp; David Crane |Kevin S. Bright |
+|     10|      18|The Last One                      |         9.7|Marta Kauffman &amp; David Crane |Kevin S. Bright |
+|      4|      12|The One with the Embryos          |         9.5|Jill Condon &amp; Amy Toomin     |Kevin S. Bright |
+|      2|      14|The One with the Prom Video       |         9.4|Alexa Junge                  |James Burrows   |
  I haven't added how much each character speaks yet but will do
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -257,12 +257,12 @@ According to our models, the perfect "Friends" episode should be:
 
 The actual "perfect" episode is:
 
-```{r info-arranged, include=FALSE}
+```{r info-arrange, echo = FALSE}
 friends_info_arranged <- friends_info %>%
   arrange(desc(imdb_rating))%>%
   select(season, episode, title, imdb_rating, written_by, directed_by)
 
-kable(head(friends_info_arranged, n = 10))
+kable(head(friends_info_arranged, n=5))
 ```
- I haven't added how much each character speaks yet but will do 
+ 
 
