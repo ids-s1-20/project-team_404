@@ -116,10 +116,12 @@ friends_wanted %>%
   theme(legend.position = "none",
         plot.background = element_rect(fill = "#fff7c4") )
 ```
+<<<<<<< HEAD
+=======
+--
+>>>>>>> 7e31d7cfded4d4c3fb5126a99dee793285db7781
 
 This plot shows us that Ross and Monica have the highest impact in terms of when they have more lines the IMDB rating of the show on average increases more than when the other characters do. It seems though that as every characters number of lines increases the rating does so too slightly. 
-=======
->>>>>>> e220d5385e996a96b553c71f304bd1d6d4527c8f
 
 ---
 # Tone
@@ -178,16 +180,16 @@ Note: we only have info on first 4 seasons
 This plot suggests that as the number of utterances of peaceful, powerful and scared tone increase as does the average rating. However, episodes that have a more mad or sad tone decrease in rating.
 
 ---
-# Writer
 
-```{r writer-cleanse, echo = FALSE}
+#Writer
+
+Here we look at the top 10 writers with 10 or more episodes.
+```{r writers-split, echo = FALSE}
 writers <- friends_info %>%
   mutate(written_by = str_remove(written_by, "Story by :")) %>% 
   mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&"))
 
-```
 
-```{r writers-split, echo = FALSE}
 writers <- writers %>% 
   mutate(written_by = strsplit(as.character(written_by), "\\&")) %>% 
   unnest(written_by) %>% 
@@ -199,18 +201,7 @@ writers_sum <- writers %>%
   group_by(written_by) %>% 
   summarise(mean_rating = mean(imdb_rating), med_rating = median(imdb_rating), n_episodes = n()) %>% 
   arrange(desc(mean_rating))
-
-kable(head(writers_sum, n = 10), format = "html")
 ```
-
-The highest rated writer is Suzie Villandry, however she has only written one episode;
-should we consider writers with not many episodes?
-
----
-#Writer (cont.)
-
-Here we look at the top 10 writers with 10 or more episodes.
-
 ```{r writer-avg-over10, echo = FALSE, message = FALSE}
 writers_sum2 <- writers_sum %>% 
  filter(n_episodes > 9)
@@ -274,7 +265,7 @@ the actual "perfect" episode is:
 ```{r}
 friends_info_arranged <- friends_info %>%
   arrange(desc(imdb_rating))%>%
-  select(season, episode, title,imdb_rating, written_by, directed_by)
+  select(season, episode, title, imdb_rating, written_by, directed_by)
 
 kable(head(friends_info_arranged, n = 10))
 ```

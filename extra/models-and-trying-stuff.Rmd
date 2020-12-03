@@ -80,6 +80,7 @@ friends_info_arranged <- friends_info %>%
   arrange(desc(imdb_rating))%>%
   select(season, episode, title,imdb_rating, written_by, directed_by)
 
+
 kable(head(friends_info_arranged, n = 10))
 ```
 
