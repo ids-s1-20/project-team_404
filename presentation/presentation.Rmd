@@ -226,7 +226,6 @@ dir_sum <- friends_info %>%
 kable(head(dir_sum, n = 10), format = "html")
 ```
 
-<<<<<<< HEAD
 ---
 # IMDB Score
 
