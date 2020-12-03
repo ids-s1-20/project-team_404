@@ -64,5 +64,15 @@ imdb_to_add <- friends_emotions_wider %>%
   select(season, episode, imdb_rating)
 ```
 
+##perf episode
+
+```{r crerating-perf-dataset}
+#friends_perf <- 
+writers %>%
+  left_join (friends_wanted_wider, season = season, episode = episode)%>%
+  filter(written_by == "David Crane" | written_by == "Suzie Villandry",
+         direc
+
+```
 
 

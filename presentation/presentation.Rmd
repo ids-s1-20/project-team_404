@@ -108,13 +108,30 @@ friends_wanted %>%
         x = "Number of Lines",
         y = "IMDB Rating"
       )+
-  scale_color_viridis_d()+
+  scale_color_manual(values = c("#ff4238", "#007ade", "#9a000b", "#00009e", 
+                                "#ff736b", "#42a2db")) +
   theme(legend.position = "none",
         plot.background = element_rect(fill = "#fff7c4") )
 ```
 --
 
 - Insert Short Summary of visualisation 
+
+
+---
+# Tone
+
+```{r friends-tone-lr}
+  
+friends_tone_lr <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
+
+tidy(friends_tone_lr)
+
+```
+
+Note: we only have info on first 4 seasons
 
 ---
 # Tone
@@ -134,7 +151,8 @@ friends_emotions %>%
         x = "Number of Utterances",
         y = "IMDB Rating"
       )+
-  scale_color_viridis_d()+
+  scale_color_manual(values = c("#a8d8ff", "#ff4238", "#007ade", "#9a000b", "#00009e", 
+                                "#ff817a", "#42a2db")) +
   theme(legend.position = "none",
         plot.background = element_rect(fill = "#fff7c4")) 
 
@@ -153,16 +171,7 @@ friends_emotions_wider <- friends_emotions_wider %>%
   select(- `Chandler Bing`, - `Rachel Green`, - `Ross Geller`, - `Monica Geller`, - `Joey Tribbiani`, -`Phoebe Buffay`, -`air_date`, -`us_views_millions`, -`written_by`, -`directed_by` )
 ```
 
-
-```{r friends-tone-lr}
-  
-friends_tone_lr <- linear_reg() %>%
-  set_engine("lm") %>%
-  fit(imdb_rating ~ Joyful +  Mad + Neutral + Peaceful + Powerful + Sad + Scared, data = friends_emotions_wider)
-
-tidy(friends_tone_lr)
-
-```
+Note: we only have info on first 4 seasons
 
 ---
 # Writer
@@ -171,8 +180,6 @@ tidy(friends_tone_lr)
 writers <- friends_info %>%
   mutate(written_by = str_remove(written_by, "Story by :")) %>% 
   mutate(written_by = str_replace(written_by,"Teleplay by :", "\\&"))
-
-#view(writers)
 
 ```
 
@@ -220,6 +227,16 @@ dir_sum <- friends_info %>%
 kable(head(dir_sum, n = 10), format = "html")
 ```
 
+
+---
+# Outcome
+
+The perfect "Friends" episode:
+ - written by David Crane (or Suzie Villandry)
+ - directed by Kevin S. Bright (or David Schwimmer)
+ - scared and peaceful 
+ - mostly the Gellers talking 
+ 
 ---
 # Layouts
 
