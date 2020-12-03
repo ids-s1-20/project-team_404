@@ -250,10 +250,10 @@ According to our models, the perfect "Friends" episode should be:
  - mostly the Gellers talking 
  
 ```{r predicted-best-episode, echo = FALSE}
-writers %>%
-  left_join (friends_wanted_wider, season = season, episode = episode)%>%
-  filter(written_by == "David Crane" | written_by == "Suzie Villandry",
-         directed_by== "Kevin S. Bright" | directed_by == "David Schwimmer")%>%
+#writers %>%
+#  left_join (friends_wanted_wider, season = season, episode = episode)%>%
+ # filter(written_by == "David Crane" | written_by == "Suzie Villandry",
+ #        directed_by== "Kevin S. Bright" | directed_by == "David Schwimmer")%>%
 ```
 
 ---
