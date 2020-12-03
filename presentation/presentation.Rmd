@@ -246,31 +246,6 @@ view(friends_info)
 ```
 
 ---
-
-
-
-
-# Layouts
-
-You can use plain text
-
-- or bullet points
-
-.pull-left[
-or text in two columns $^*$
-]
-.pull-right[
-- like
-- this
-]
-
-.footnote[
-[*] And add footnotes
-]
-=======
->>>>>>> ff15738823028c43c533df09e5791bc7a7c7b8dd
-
----
 # Outcome
 
 According to our models, the perfect "Friends" episode should be:
