@@ -118,6 +118,16 @@ friends_wanted %>%
 ```
 
 ---
+#Residual Plot for Speakers
+
+```{r character-vs-rating-aug, echo = FALSE, message = FALSE}
+friends_speaker_aug <- augment(friends_speaker_lr$fit)
+
+ggplot(friends_speaker_aug, aes(x=.fitted, y= .resid)) +
+  geom_jitter() +
+  geom_hline( yintercept = 0, linetype = "dashed")
+```
+---
 
 # Tone
 ```{r tone-vs-imdb-rating, echo = FALSE, message = FALSE}

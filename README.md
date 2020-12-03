@@ -61,6 +61,7 @@ The final episode, story comes to a happy end.
 Seems our predictions need improvement, as we only got the writer and director of one of the episodes right.
  
 In conclusion, we have been able to identify several factors which certainly contribute to a higher IMDB rating. It is clear that when Kevin S. Bright is directing and one or both of Marta Kauffman and David Crane is writing it leads to a more highly rated episode, as well as when the Geller siblings are more involved with a mix of peaceful and scared tone to the episode. However, there are variables which were not included in the dataset, for example whether or not an episode contained a scene which has particular importance to the story-line, or factors which are tough to quantify, for example how funny the jokes in that episode are. These are both things which would influence a viewers enjoyment of an episode and hence increase the IMDB score. So whilst it is near impossible to detail a perfect episode we have certainly outlined criteria that make an episode better. 
+
 ## Presentation
 
 Our presentation can be found [here](presentation/presentation.html).
