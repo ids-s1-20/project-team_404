@@ -83,3 +83,5 @@ friends_info_arranged <- friends_info %>%
 kable(head(friends_info_arranged, n = 10))
 ```
 
+
+
