@@ -84,5 +84,11 @@ friends_info_arranged <- friends_info %>%
 kable(head(friends_info_arranged, n = 10))
 ```
 
+```{r}
+
+friends_info %>%
+  left_join(friends_emotions_wider, season = season, episode = episode)
+
+```
 
 

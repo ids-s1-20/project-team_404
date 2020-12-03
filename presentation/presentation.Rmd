@@ -258,4 +258,10 @@ friends_info_arranged <- friends_info %>%
 kable(head(friends_info_arranged, n=5))
 ```
  
+```{r}
+friends_outcome <- friends_info %>%
+  left_join(friends_wanted_wider, season = season, episode = episode)%>%
+  view(friends_outcome)
+```
+ 
 
