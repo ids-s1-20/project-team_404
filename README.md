@@ -66,12 +66,14 @@ In conclusion, we have been able to identify several factors which certainly con
 
 Our presentation can be found [here](presentation/presentation.html).
 
+Our video presentation can be found here:
+
+https://uoe-my.sharepoint.com/:v:/g/personal/s2037949_ed_ac_uk/EXvklgnN3lFNm4pnjmhofmABI0GRk_XYyNyg6dMw0hGyKw?e=ZXekde
+
 ## Data
 
-Include a citation for your data here. See
-<http://libraryguides.vu.edu.au/c.php?g=386501&p=4347840> for guidance
-on proper citation for datasets. If you got your data off the web, make
-sure to note the retrieval date.
+Emil Hvitfeldt 2020, *Friends*, electronic dataset, `friends` R package,
+<https://github.com/emorynlp/character-mining>
 
 ## References
 
